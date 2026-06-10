@@ -1,3 +1,4 @@
+<script>
 var OPRET_KODE = "12345678";
 
 var PERSONER = [
@@ -843,15 +844,36 @@ function hentOgVisAktiviteter() {
     return;
   }
 
-  var API_URL =
-    "https://script.google.com/macros/s/AKfycbyMFTDy5tY85IA79-x-gRnMn3RM8VGoBnJWQ-fzNetn2khusU4JSVHzOBMYibfSeb6F/exec?action=hentAktiviteter";
+  hentAktiviteterJsonp(behandlData, visFejl);
+}
 
-  fetch(API_URL)
-    .then(function(response) {
-      return response.json();
-    })
-    .then(behandlData)
-    .catch(visFejl);
+function hentAktiviteterJsonp(success, failure) {
+  var callbackName = "smCallback_" + Date.now();
+
+  var script = document.createElement("script");
+
+  var url =
+    "https://script.google.com/macros/s/AKfycbyMFTDy5tY85IA79-x-gRnMn3RM8VGoBnJWQ-fzNetn2khusU4JSVHzOBMYibfSeb6F/exec" +
+    "?action=hentAktiviteter" +
+    "&callback=" + callbackName;
+
+  window[callbackName] = function(data) {
+    try {
+      success(data);
+    } finally {
+      delete window[callbackName];
+      script.remove();
+    }
+  };
+
+  script.onerror = function() {
+    delete window[callbackName];
+    script.remove();
+    failure({ message: "Kunne ikke hente data via JSONP" });
+  };
+
+  script.src = url;
+  document.body.appendChild(script);
 }
 
 function visUge() {
@@ -1649,3 +1671,5 @@ function fortolkVejr(kode, nedbor, vind) {
 
   return { ikon: "🌤️", tekst: "Vejr" };
 }
+
+</script>
