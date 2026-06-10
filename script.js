@@ -1,4 +1,3 @@
-<script>
 var OPRET_KODE = "12345678";
 
 var PERSONER = [
@@ -1671,5 +1670,3 @@ function fortolkVejr(kode, nedbor, vind) {
 
   return { ikon: "🌤️", tekst: "Vejr" };
 }
-
-</script>
