@@ -1,7 +1,7 @@
 {
   "name": "Special Minds Infotavle",
-  "short_name": "Infotavle",
-  "start_url": "https://script.google.com/macros/s/AKfycbwxleIq3mPTAAN94ZpVZLRGeMoK0Jx_cfjq89s88KoYngYOx4Zxx657rAFan7_SucLw/exec",
+"short_name": "SM Tavle",
+  "start_url": "https://nduru88-wq.github.io/SpecialMinds-Infotavle/",
   "display": "standalone",
   "background_color": "#2f3b4d",
   "theme_color": "#2f3b4d",
