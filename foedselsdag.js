@@ -1,5 +1,5 @@
 const API_URL =
-  "https://script.google.com/macros/s/AKfycbwL7jMUKgp9nFqIzqlIg_oa8HxOWIT4Qc_Jni1DqZMVD8q__sTlpscK2av9e9QPdmwe/exec";
+  "https://script.google.com/macros/s/AKfycbypHUAv-OMIko_UbahBE09_W98v1BhN3_YwixZaaG-YBjbOMDvffxb01vMR1yQDr1pD/exec";
 
 function $(id) {
   return document.getElementById(id);
