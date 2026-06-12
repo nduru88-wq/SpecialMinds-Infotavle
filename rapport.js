@@ -54,6 +54,8 @@ function jsonpKald(params, success, failure) {
 }
 
 function hentValg() {
+  console.log("Starter hentValg");
+
   $("rapportStatus").textContent = "Henter valgmuligheder...";
 
   jsonpKald(
@@ -61,11 +63,20 @@ function hentValg() {
       action: "rapportValg"
     },
     function(data) {
+
+      console.log("SUCCESS:");
+      console.log(data);
+
       fyldSelect("person", data.personer || []);
       fyldSelect("aktivitet", data.aktivitetstyper || []);
+
       $("rapportStatus").textContent = "";
     },
     function(err) {
+
+      console.log("FEJL:");
+      console.log(err);
+
       $("rapportStatus").textContent =
         err.message || "Kunne ikke hente valgmuligheder.";
     }
