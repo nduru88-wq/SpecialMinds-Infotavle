@@ -1,5 +1,5 @@
 const API_URL =
-  "https://script.google.com/macros/s/AKfycbxWDPu33VaDF7HaXKowKWpHYyNi0nVy0-YWPuuwbPF3jG3zzjg2mZNZIIEs4YZLr7VF/exec";
+  "https://script.google.com/macros/s/AKfycbxj67COsYYBq6COwQ7cWn65Kv1NCvlHoBv2oQ3jKa0Pyb-PGlKcU7Q14pub42s1atc/exec";
 
 document.addEventListener("DOMContentLoaded", function() {
   saetStandardDatoer();
@@ -50,7 +50,6 @@ function jsonpKald(params, success, failure) {
   };
 
   script.src = API_URL + "?" + new URLSearchParams(params).toString();
-
   document.body.appendChild(script);
 }
 
@@ -59,12 +58,11 @@ function hentValg() {
 
   jsonpKald(
     {
-      action: "hentRapportValg"
+      action: "rapportValg"
     },
     function(data) {
       fyldSelect("person", data.personer || []);
       fyldSelect("aktivitet", data.aktivitetstyper || []);
-
       $("rapportStatus").textContent = "";
     },
     function(err) {
@@ -91,7 +89,7 @@ function visRapport() {
 
   jsonpKald(
     {
-      action: "hentRapportData",
+      action: "rapportData",
       person: $("person").value,
       aktivitet: $("aktivitet").value,
       fraDato: $("fraDato").value,
