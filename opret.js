@@ -1,5 +1,5 @@
 const API_URL =
-  "https://script.google.com/macros/s/AKfycbwL7jMUKgp9nFqIzqlIg_oa8HxOWIT4Qc_Jni1DqZMVD8q__sTlpscK2av9e9QPdmwe/exec";
+  "https://script.google.com/macros/s/AKfycbxj67COsYYBq6COwQ7cWn65Kv1NCvlHoBv2oQ3jKa0Pyb-PGlKcU7Q14pub42s1atc/exec";
 
 const OPRET_KODE = "12345678";
 
