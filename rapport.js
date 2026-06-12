@@ -86,6 +86,8 @@ function hentValg() {
 function fyldSelect(id, vaerdier) {
   const select = $(id);
 
+  select.innerHTML = "<option>Alle</option>";
+
   vaerdier.forEach(function(vaerdi) {
     const option = document.createElement("option");
     option.value = vaerdi;
