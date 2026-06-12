@@ -64,12 +64,12 @@ function gemFoedselsdag() {
   knap.textContent = "Gemmer...";
 
   jsonpKald(
-    {
-      action: "gemFoedselsdag",
-      navn: navn,
-      kortDato: kortDato,
-      manuelDato: manuelDato
-    },
+  {
+    action: "gemBirthday",
+    navn: navn,
+    kortDato: kortDato,
+    manuelDato: manuelDato
+  },
     function(resultat) {
       if (resultat && resultat.ok === false) {
         visStatus(resultat.message || "Der skete en fejl.", true);
