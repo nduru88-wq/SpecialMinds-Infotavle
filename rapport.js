@@ -1,5 +1,5 @@
 const API_URL =
-  "https://script.google.com/macros/s/AKfycbypHUAv-OMIko_UbahBE09_W98v1BhN3_YwixZaaG-YBjbOMDvffxb01vMR1yQDr1pD/exec";
+  "https://script.google.com/macros/s/AKfycbxWDPu33VaDF7HaXKowKWpHYyNi0nVy0-YWPuuwbPF3jG3zzjg2mZNZIIEs4YZLr7VF/exec";
 
 document.addEventListener("DOMContentLoaded", function() {
   saetStandardDatoer();
