@@ -852,7 +852,7 @@ function hentAktiviteterJsonp(success, failure) {
   var script = document.createElement("script");
 
   var url =
-  "https://script.google.com/macros/s/AKfycbyNBHEJnJOmhz25igT4ERKx2PGBmSm_dC0bHSgehMt5EiMJ0t35Ch6lmvWzHcO__jt2/exec" +
+  "https://script.google.com/macros/s/AKfycbxCbzb_VfTlnmdCwIZYdfw140IvNZuPNeNNTXIGV9DLyPoSWp6tNtg3mqqEfVKLfptk/exec" +
     "?action=hentAktiviteter" +
     "&callback=" + callbackName;
 
