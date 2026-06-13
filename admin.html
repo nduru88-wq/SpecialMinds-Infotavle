@@ -223,41 +223,37 @@
     }
 
     function aabn(side, id) {
-      const token = localStorage.getItem("sm_admin_token") || "";
+  const githubBase =
+    "https://nduru88-wq.github.io/SpecialMinds-Infotavle/";
 
-      kaldApi({
-        action: "hentBeskyttetSideUrl",
-        side: side,
-        token: token,
-        id: id || ""
-      })
-      .then(function(data) {
-        const url = data.url || data;
-        window.open(url, "_blank", "noopener,noreferrer");
-      })
-      .catch(function(err) {
-        alert(err.message || "Kunne ikke åbne siden.");
-      });
-    }
+  let fil =
+    side === "opret" ? "opret.html" :
+    side === "foedselsdag" ? "foedselsdag.html" :
+    side === "rapport" ? "rapport.html" :
+    "index.html";
 
-    function aabnTavle() {
-      kaldApi({
-        action: "hentTavleUrl"
-      })
-      .then(function(data) {
-        const url = data.url || data;
-        window.open(url, "_blank", "noopener,noreferrer");
-      })
-      .catch(function(err) {
-        alert(err.message || "Kunne ikke åbne tavlen.");
-      });
-    }
+  let url = githubBase + fil;
 
-    function logUd() {
-      localStorage.removeItem("sm_admin_token");
-      location.reload();
-    }
-  </script>
+  if (id) {
+    url += "?id=" + encodeURIComponent(id);
+  }
+
+  window.open(url, "_blank", "noopener,noreferrer");
+}
+
+function aabnTavle() {
+  window.open(
+    "https://nduru88-wq.github.io/SpecialMinds-Infotavle/",
+    "_blank",
+    "noopener,noreferrer"
+  );
+}
+
+function logUd() {
+  localStorage.removeItem("sm_admin_token");
+  location.reload();
+}
+</script>
 
 </body>
 </html>
