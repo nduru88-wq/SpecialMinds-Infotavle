@@ -979,9 +979,10 @@ function tilpasEventHoejder() {
       }
 
       var person = event.querySelector(".event-person-label");
-      if (person) {
-        person.style.fontSize = (12 * scale) + "px";
-      }
+if (person) {
+  person.style.fontSize = (8 * scale) + "px";
+  person.style.maxWidth = "80px";
+}
 
       var img = event.querySelector(".event-person-photo img");
       if (img) {
