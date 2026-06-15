@@ -896,19 +896,19 @@ function visUge() {
 
     var dagens = aktiviteterGlobal
       .filter(function(a) {
-        if (!aktivitetPasserTilDato(a, dato)) return false;
-
-        var erAktuelDag = erSammeDato(dato, hentAktuelDato());
-
-        if (erAktuelDag && erFravaer(a.aktivitet)) {
-          return false;
-        }
-
-        return true;
-      })
+  return aktivitetPasserTilDato(a, dato);
+})
+      
       .sort(function(a, b) {
-        return String(a.tidspunkt).localeCompare(String(b.tidspunkt));
-      });
+  var aErFravaer = erFravaer(a.aktivitet) || a.aktivitet === "Ude af huset";
+  var bErFravaer = erFravaer(b.aktivitet) || b.aktivitet === "Ude af huset";
+
+  if (aErFravaer && !bErFravaer) return 1;
+  if (!aErFravaer && bErFravaer) return -1;
+
+  return String(a.tidspunkt).localeCompare(String(b.tidspunkt));
+});
+    
     if (!dagens.length) {
       var tom = document.createElement("div");
       tom.className = "noevent";
