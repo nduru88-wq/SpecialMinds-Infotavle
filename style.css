@@ -106,8 +106,7 @@ body {
 /* AKTIVITETER */
 
 .event {
-  display: grid;
-  grid-template-columns: 42px 1fr 52px;
+  display: flex;
   gap: 6px;
   align-items: center;
   background: white;
