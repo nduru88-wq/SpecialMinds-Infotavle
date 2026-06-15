@@ -183,9 +183,9 @@ body {
   align-items: center;
   justify-content: center;
   gap: 2px;
-  min-width: 70px;
   width: 70px;
-  flex-shrink: 0;
+  min-width: 70px;
+  flex: 0 0 70px;
 }
 
 .event-person-photo {
@@ -209,7 +209,7 @@ body {
   font-size: 9px;
   font-weight: bold;
   line-height: 1;
-  max-width: 42px;
+  max-width: 70px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
