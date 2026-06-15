@@ -106,7 +106,8 @@ body {
 /* AKTIVITETER */
 
 .event {
-  display: flex;
+  display: grid;
+  grid-template-columns: 56px 1fr 56px;
   gap: 6px;
   align-items: center;
   background: white;
@@ -119,6 +120,20 @@ body {
   min-height: 54px;
   overflow: hidden;
   box-shadow: none;
+}
+
+.event-person-box {
+  grid-column: 1;
+}
+
+.event-main-content {
+  grid-column: 2;
+  text-align: center;
+}
+
+.event-activity-icon {
+  grid-column: 3;
+  justify-self: end;
 }
 
 .event-fravaer {
