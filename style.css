@@ -142,16 +142,7 @@ body {
 }
 
 .event-activity-icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 56px;
-  line-height: 1;
-  background: transparent;
-  box-shadow: none;
-  width: auto;
-  height: auto;
-  border-radius: 0;
+  display: none !important;
 }
 
 .event-main-content {
