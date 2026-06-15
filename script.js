@@ -374,6 +374,7 @@ function vaelgAktivitetFraGruppe(gruppe) {
   }
 
   setVal("aktivitet", valgt);
+  setVal("note", "");
 
   opdaterKategoriFarver();
   opdaterHeleDagenEfterAktivitet();
@@ -573,7 +574,7 @@ function hentFormData(prefix) {
     aktivitet: erRediger ? val(aktivitetId) : hentValgtAktivitet(),
     tidspunkt: hele ? "08:00" : val(tidspunktId),
     varighed: hele ? "Hele dagen" : val(varighedId),
-    note: val(noteId)
+    note: skalViseNote(erRediger ? val(aktivitetId) : hentValgtAktivitet()) ? val(noteId) : ""
   };
 }
 
