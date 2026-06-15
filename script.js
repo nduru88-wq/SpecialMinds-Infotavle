@@ -1022,14 +1022,15 @@ function lavEventElement(a) {
       "<div class='event-person-label'>" + person + "</div>";
 
   div.innerHTML =
-    "<div class='event-activity-icon'>" + venstreIkon + "</div>" +
-    "<div class='event-main-content'>" +
-      "<div class='event-title'>" + titel + (tid ? " - " + tid : "") + "</div>" +
-      lavEventNote(a) +
-    "</div>" +
-    "<div class='event-person-box'>" +
-      hoejreIndhold +
-    "</div>" +
+  "<div class='event-person-box'>" +
+    hoejreIndhold +
+  "</div>" +
+  "<div class='event-main-content'>" +
+    "<div class='event-title'>" + titel + (tid ? " - " + tid : "") + "</div>" +
+    lavEventNote(a) +
+  "</div>" +
+  "<div class='event-activity-icon'>" + venstreIkon + "</div>" +
+    
     "<div class='event-actions'>" +
       "<button class='edit-btn' onclick=\"event.stopPropagation(); aabnRedigerSide('" + id + "')\">Ret</button>" +
       "<button class='delete-btn' onclick=\"event.stopPropagation(); sletAktivitetFraTavle('" + id + "')\">Slet</button>" +
