@@ -107,7 +107,7 @@ body {
 
 .event {
   display: grid;
-  grid-template-columns: 52px 1fr 42px;
+  grid-template-columns: 42px 1fr 52px;
   gap: 6px;
   align-items: center;
   background: white;
