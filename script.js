@@ -1446,7 +1446,7 @@ var slideshowBilleder = [];
 var slideshowTimer = null;
 
 var SLIDESHOW_API =
-  "https://api.github.com/repos/nduru88-wq/InfotavleSM-Billeder/contents/slideshow";
+  "https://github.com/nduru88-wq/SpecialMinds-Infotavle/tree/main/slideshow";
 
 function startSlideshow() {
   hentSlideshowBillederFraGithub();
