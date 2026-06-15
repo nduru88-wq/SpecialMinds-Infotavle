@@ -963,7 +963,7 @@ function tilpasEventHoejder() {
 
       var icon = event.querySelector(".event-activity-icon");
       if (icon) {
-        icon.style.fontSize = (18 * scale) + "px";
+        icon.style.fontSize = (40 * scale) + "px";
       }
 
       var title = event.querySelector(".event-title");
