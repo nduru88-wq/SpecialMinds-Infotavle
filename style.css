@@ -137,14 +137,13 @@ body {
   font-size: 32px;
   line-height: 1;
   box-shadow: 0 1px 5px rgba(0,0,0,0.2);
-  order: 3 !important;
 }
 
 .event-main-content {
   text-align: center;
   line-height: 1.1;
   min-width: 0;
-  order: 2 !important;
+  flex: 1;
 }
 
 .event-title {
@@ -179,7 +178,6 @@ body {
   justify-content: center;
   gap: 2px;
   min-width: 0;
-  order: 1 !important;
 }
 
 .event-person-photo {
