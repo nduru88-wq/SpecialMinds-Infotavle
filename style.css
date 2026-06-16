@@ -990,3 +990,13 @@ body.loading #dataLoaderOverlay {
   margin-top: 7px;
   line-height: 1.25;
 }
+
+/* Fødselsdag altid øverst i dagskolonnen */
+.day {
+  display: flex;
+  flex-direction: column;
+}
+
+.event-foedselsdag {
+  order: -10;
+}
