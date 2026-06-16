@@ -997,8 +997,4 @@ body.loading #dataLoaderOverlay {
   flex-direction: column;
 }
 
-.event-foedselsdag {
-  order: -10;
-}
-
 
