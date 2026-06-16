@@ -1469,12 +1469,14 @@ function gaaTilTavle() {
 }
 
 function aabnRedigerSide(id) {
+  alert("Åbner redigering for ID: " + id);
+
   if (!id) {
     alert("Mangler ID på aktiviteten.");
     return;
   }
 
-  window.open("opret.html?id=" + encodeURIComponent(id), "_blank");
+  window.location.href = "opret.html?id=" + encodeURIComponent(id);
 }
 
 
