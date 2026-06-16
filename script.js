@@ -1046,7 +1046,7 @@ function lavEventElement(a) {
   "<div class='event-activity-icon'>" + venstreIkon + "</div>" +
     
  "<div class='event-actions'>" +
-      "<button class='edit-btn' onclick=\"event.stopPropagation(); alert('Ret-knap trykket. ID: " + id + "'); aabnRedigerSide('" + id + "')\">Ret</button>" +
+      "<button class='edit-btn' onclick=\"event.stopPropagation(); aabnRedigerSide('" + id + "')\">Ret</button>" +
       "<button class='delete-btn' onclick=\"event.stopPropagation(); sletAktivitetFraTavle('" + id + "')\">Slet</button>" +
     "</div>";
 
