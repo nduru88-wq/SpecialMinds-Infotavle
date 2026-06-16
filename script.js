@@ -1439,16 +1439,12 @@ function gaaTilTavle() {
 }
 
 function aabnRedigerSide(id) {
-  var token = localStorage.getItem("sm_admin_token") || "";
+  if (!id) {
+    alert("Mangler ID på aktiviteten.");
+    return;
+  }
 
-  google.script.run
-    .withSuccessHandler(function(url) {
-      window.open(url, "_blank");
-    })
-    .withFailureHandler(function(err) {
-      alert(err.message || "Kunne ikke åbne redigering.");
-    })
-    .hentOpretUrl(id, token);
+  window.open("opret.html?id=" + encodeURIComponent(id), "_blank");
 }
 
 
