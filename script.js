@@ -1035,47 +1035,20 @@ function lavEventElement(a) {
     : "<div class='event-person-photo'><img src='" + personImg(a.person) + "'></div>" +
       "<div class='event-person-label'>" + person + "</div>";
 
-  var aktivitetsKlasser = [
-  "cafe",
-  "friday",
-  "pause",
-  "krea",
-  "praktik",
-  "undervisning"
-];
+div.innerHTML =
+  "<div class='event-person-box'>" +
+    hoejreIndhold +
+  "</div>" +
+  "<div class='event-main-content'>" +
+    "<div class='event-title'>" + titel + (tid ? " - " + tid : "") + "</div>" +
+    lavEventNote(a) +
+  "</div>" +
+  "<div class='event-activity-icon'>" + venstreIkon + "</div>" +
 
-var erAktivitetsFane =
-  info && aktivitetsKlasser.includes(info.klasse);
-
-if (erAktivitetsFane && !erFoedselsdag) {
-  div.innerHTML =
-    "<div class='event-activity-icon'>" + venstreIkon + "</div>" +
-    "<div class='event-main-content'>" +
-      "<div class='event-title'>" + titel + (tid ? " - " + tid : "") + "</div>" +
-      lavEventNote(a) +
-    "</div>" +
-    "<div class='event-person-box'>" +
-      hoejreIndhold +
-    "</div>" +
-    "<div class='event-actions'>" +
-      "<button class='delete-btn' onclick=\"event.stopPropagation(); sletAktivitetFraTavle('" + id + "')\">Slet</button>" +
-      "<button class='edit-btn' onclick=\"event.stopPropagation(); aabnRedigerSide('" + id + "')\">Ret</button>" +
-    "</div>";
-} else {
-  div.innerHTML =
-    "<div class='event-person-box'>" +
-      hoejreIndhold +
-    "</div>" +
-    "<div class='event-main-content'>" +
-      "<div class='event-title'>" + titel + (tid ? " - " + tid : "") + "</div>" +
-      lavEventNote(a) +
-    "</div>" +
-    "<div class='event-activity-icon'>" + venstreIkon + "</div>" +
-    "<div class='event-actions'>" +
-      "<button class='delete-btn' onclick=\"event.stopPropagation(); sletAktivitetFraTavle('" + id + "')\">Slet</button>" +
-      "<button class='edit-btn' onclick=\"event.stopPropagation(); aabnRedigerSide('" + id + "')\">Ret</button>" +
-    "</div>";
-}
+ "<div class='event-actions'>" +
+  "<button class='delete-btn' onclick=\"event.stopPropagation(); sletAktivitetFraTavle('" + id + "')\">Slet</button>" +
+  "<button class='edit-btn' onclick=\"event.stopPropagation(); aabnRedigerSide('" + id + "')\">Ret</button>" +
+"</div>";
 
   return div;
 }
