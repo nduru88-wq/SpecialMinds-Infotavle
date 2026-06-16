@@ -1046,9 +1046,9 @@ function lavEventElement(a) {
   "<div class='event-activity-icon'>" + venstreIkon + "</div>" +
     
  "<div class='event-actions'>" +
-      "<button class='edit-btn' onclick=\"event.stopPropagation(); aabnRedigerSide('" + id + "')\">Ret</button>" +
-      "<button class='delete-btn' onclick=\"event.stopPropagation(); sletAktivitetFraTavle('" + id + "')\">Slet</button>" +
-    "</div>";
+  "<button class='delete-btn' onclick=\"event.stopPropagation(); sletAktivitetFraTavle('" + id + "')\">Slet</button>" +
+  "<button class='edit-btn' onclick=\"event.stopPropagation(); aabnRedigerSide('" + id + "')\">Ret</button>" +
+"</div>";
 
   div.addEventListener("click", function() {
     div.classList.toggle("vis-menu");
