@@ -978,3 +978,15 @@ body.loading #dataLoaderOverlay {
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
+/* FØDSELSDAG - mere luft mellem titel og note */
+.event-foedselsdag .event-title {
+  margin-bottom: 5px;
+  line-height: 1.1;
+}
+
+.event-foedselsdag .event-note {
+  display: block;
+  margin-top: 4px;
+  line-height: 1.25;
+}
