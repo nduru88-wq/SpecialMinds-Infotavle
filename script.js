@@ -1050,6 +1050,10 @@ div.innerHTML =
   "<button class='edit-btn' onclick=\"event.stopPropagation(); aabnRedigerSide('" + id + "')\">Ret</button>" +
 "</div>";
 
+  div.addEventListener("click", function() {
+  div.classList.toggle("vis-menu");
+});
+  
   return div;
 }
 
