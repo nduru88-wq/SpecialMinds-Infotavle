@@ -902,22 +902,25 @@ function visUge() {
       
       .sort(function(a, b) {
 
-  // Fødselsdag altid øverst
-  var aErFoedselsdag = a.aktivitet === "Fødselsdag";
-  var bErFoedselsdag = b.aktivitet === "Fødselsdag";
+  function erFoedselsdag(x) {
+    return String(x.aktivitet || x.type || x.kategori || "")
+      .toLowerCase()
+      .includes("fødselsdag");
+  }
+
+  var aErFoedselsdag = erFoedselsdag(a);
+  var bErFoedselsdag = erFoedselsdag(b);
 
   if (aErFoedselsdag && !bErFoedselsdag) return -1;
   if (!aErFoedselsdag && bErFoedselsdag) return 1;
 
-  // Fravær nederst
   var aErFravaer = erFravaer(a.aktivitet) || a.aktivitet === "Ude af huset";
   var bErFravaer = erFravaer(b.aktivitet) || b.aktivitet === "Ude af huset";
 
   if (aErFravaer && !bErFravaer) return 1;
   if (!aErFravaer && bErFravaer) return -1;
 
-  // Ellers sortér efter tidspunkt
-  return String(a.tidspunkt).localeCompare(String(b.tidspunkt));
+  return String(a.tidspunkt || "").localeCompare(String(b.tidspunkt || ""));
 });
     
     if (!dagens.length) {
