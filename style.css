@@ -1001,12 +1001,4 @@ body.loading #dataLoaderOverlay {
   order: -10;
 }
 
-/* Sørger for at rediger/slet-knapper kan klikkes */
-.event-actions,
-.event-actions button,
-.edit-btn,
-.delete-btn {
-  pointer-events: auto;
-  z-index: 50;
-  position: relative;
-}
+
