@@ -1250,14 +1250,44 @@ function skiftUge(retning) {
 }
 
 function sletAktivitetFraTavle(id) {
+  if (!id) {
+    alert("Mangler ID på aktiviteten.");
+    return;
+  }
+
   if (!confirm("Vil du slette aktiviteten?")) return;
 
-  google.script.run
-    .withSuccessHandler(hentOgVisAktiviteter)
-    .withFailureHandler(function(err) {
-      alert(err.message || "Kunne ikke slette aktiviteten.");
-    })
-    .sletAktivitet(id);
+  var callbackName = "smSletCallback_" + Date.now();
+  var script = document.createElement("script");
+
+  var url =
+    "https://script.google.com/macros/s/AKfycbxCbzb_VfTlnmdCwIZYdfw140IvNZuPNeNNTXIGV9DLyPoSWp6tNtg3mqqEfVKLfptk/exec" +
+    "?action=sletAktivitet" +
+    "&id=" + encodeURIComponent(id) +
+    "&callback=" + callbackName;
+
+  window[callbackName] = function(data) {
+    try {
+      if (data && data.ok === false) {
+        alert(data.message || "Kunne ikke slette aktiviteten.");
+        return;
+      }
+
+      hentOgVisAktiviteter();
+    } finally {
+      delete window[callbackName];
+      script.remove();
+    }
+  };
+
+  script.onerror = function() {
+    alert("Kunne ikke kontakte Apps Script.");
+    delete window[callbackName];
+    script.remove();
+  };
+
+  script.src = url;
+  document.body.appendChild(script);
 }
 
 
