@@ -1035,13 +1035,17 @@ function lavEventElement(a) {
     : "<div class='event-person-photo'><img src='" + personImg(a.person) + "'></div>" +
       "<div class='event-person-label'>" + person + "</div>";
 
-  var erAktivitetsFane =
-  a.aktivitet === "Aktivitets café" ||
-  a.aktivitet === "Praktisk værksted" ||
-  a.aktivitet === "KREA" ||
-  a.aktivitet === "Undervisning" ||
-  a.aktivitet === "Friday Minds" ||
-  a.aktivitet === "Fællespause";
+  var aktivitetsKlasser = [
+  "cafe",
+  "friday",
+  "pause",
+  "krea",
+  "praktik",
+  "undervisning"
+];
+
+var erAktivitetsFane =
+  info && aktivitetsKlasser.includes(info.klasse);
 
 if (erAktivitetsFane && !erFoedselsdag) {
   div.innerHTML =
