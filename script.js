@@ -1035,7 +1035,7 @@ function lavEventElement(a) {
     : "<div class='event-person-photo'><img src='" + personImg(a.person) + "'></div>" +
       "<div class='event-person-label'>" + person + "</div>";
 
-div.innerHTML =
+  div.innerHTML =
   "<div class='event-person-box'>" +
     hoejreIndhold +
   "</div>" +
@@ -1044,16 +1044,16 @@ div.innerHTML =
     lavEventNote(a) +
   "</div>" +
   "<div class='event-activity-icon'>" + venstreIkon + "</div>" +
-
+    
  "<div class='event-actions'>" +
   "<button class='delete-btn' onclick=\"event.stopPropagation(); sletAktivitetFraTavle('" + id + "')\">Slet</button>" +
   "<button class='edit-btn' onclick=\"event.stopPropagation(); aabnRedigerSide('" + id + "')\">Ret</button>" +
 "</div>";
 
   div.addEventListener("click", function() {
-  div.classList.toggle("vis-menu");
-});
-  
+    div.classList.toggle("vis-menu");
+  });
+
   return div;
 }
 
