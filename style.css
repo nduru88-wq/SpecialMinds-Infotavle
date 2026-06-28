@@ -997,4 +997,20 @@ body.loading #dataLoaderOverlay {
   flex-direction: column;
 }
 
+.varighed-række {
+  display: flex;
+  gap: 12px;
+  align-items: flex-end;
+}
+
+.varighed-felt {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.varighed-felt label {
+  margin-bottom: 6px;
+  font-weight: 600;
+}
 
