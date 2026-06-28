@@ -1030,10 +1030,17 @@ function lavEventElement(a) {
 
   var venstreIkon = erFoedselsdag ? "🎂" : (info.ikon || " ");
 
-  var hoejreIndhold = erFoedselsdag
-    ? "<div class='event-person-photo event-neutral-person'>👤</div>"
-    : "<div class='event-person-photo'><img src='" + personImg(a.person) + "'></div>" +
-      "<div class='event-person-label'>" + person + "</div>";
+  var hoejreIndhold;
+
+if (erFoedselsdag) {
+  hoejreIndhold = "<div class='event-person-photo event-neutral-person'>👤</div>";
+} else if (!a.person || a.person === "Ingen") {
+  hoejreIndhold = "";
+} else {
+  hoejreIndhold =
+    "<div class='event-person-photo'><img src='" + personImg(a.person) + "'></div>" +
+    "<div class='event-person-label'>" + person + "</div>";
+}
 
   div.innerHTML =
   "<div class='event-person-box'>" +
