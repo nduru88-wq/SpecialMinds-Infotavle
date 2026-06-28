@@ -83,35 +83,46 @@
     <label>Vælg kategori</label>
 
     <div class="kategori-rad">
-      <select id="aktivitetInfo" onchange="vaelgAktivitetFraGruppe('info')">
-        <option value="">Info</option>
-        <option>Besøg</option>
-        <option>Faglig sparring</option>
-        <option>Møde</option>
-        <option>Møder senere</option>
-        <option>Rundvisning</option>
-        <option>Ude af huset</option>
-        <option>Velkommen til</option>
-      </select>
 
-      <select id="aktivitetFravaer" onchange="vaelgAktivitetFraGruppe('fravaer')">
-        <option value="">Fravær</option>
-        <option>Arbejder hjemme</option>
-        <option>Ferie</option>
-        <option>Fri</option>
-        <option>Syg</option>
-      </select>
+  <div class="kategori-felt">
+    <div class="kategori-overskrift">Info</div>
+    <select id="aktivitetInfo" onchange="vaelgAktivitetFraGruppe('info')">
+      <option value="">Vælg info</option>
+      <option>Besøg</option>
+      <option>Faglig sparring</option>
+      <option>Møde</option>
+      <option>Møder senere</option>
+      <option>Rundvisning</option>
+      <option>Ude af huset</option>
+      <option>Velkommen til</option>
+    </select>
+  </div>
 
-      <select id="aktivitetFast" onchange="vaelgAktivitetFraGruppe('fast')">
-        <option value="">Aktiviteter</option>
-        <option>Aktivitets café</option>
-        <option>Friday Minds</option>
-        <option>Fællespause</option>
-        <option>KREA</option>
-        <option>Praktisk værksted</option>
-        <option>Undervisning</option>
-      </select>
-    </div>
+  <div class="kategori-felt">
+    <div class="kategori-overskrift">Fravær</div>
+    <select id="aktivitetFravaer" onchange="vaelgAktivitetFraGruppe('fravaer')">
+      <option value="">Vælg fravær</option>
+      <option>Arbejder hjemme</option>
+      <option>Ferie</option>
+      <option>Fri</option>
+      <option>Syg</option>
+    </select>
+  </div>
+
+  <div class="kategori-felt">
+    <div class="kategori-overskrift">Aktiviteter</div>
+    <select id="aktivitetFast" onchange="vaelgAktivitetFraGruppe('fast')">
+      <option value="">Vælg aktivitet</option>
+      <option>Aktivitets café</option>
+      <option>Friday Minds</option>
+      <option>Fællespause</option>
+      <option>KREA</option>
+      <option>Praktisk værksted</option>
+      <option>Undervisning</option>
+    </select>
+  </div>
+
+</div>
 
     <input type="hidden" id="aktivitet">
 
