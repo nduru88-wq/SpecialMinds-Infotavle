@@ -218,6 +218,24 @@ body {
   color: #2f3b4d;
 }
 
+.varighed-række {
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+  width: 100%;
+}
+
+.varighed-felt {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.varighed-felt select {
+  width: 100%;
+}
+
 @media(max-width:600px) {
   .topbar {
     font-size: 26px;
