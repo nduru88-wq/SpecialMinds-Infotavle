@@ -71,8 +71,22 @@ body {
   width: 100%;
 }
 
-.kategori-rad select {
+.kategori-felt {
   flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.kategori-overskrift {
+  font-size: 15px;
+  font-weight: bold;
+  color: #2f3b4d;
+  text-align: center;
+}
+
+.kategori-rad select {
+  width: 100%;
 }
 
 #aktivitetInfo,
