@@ -286,7 +286,8 @@ function opdaterHeleDagenEfterAktivitet() {
   }
 
   setDisabledMedOpacity("tidspunkt", skalVaereHeldag);
-  setDisabledMedOpacity("varighed", skalVaereHeldag);
+  setDisabledMedOpacity("varighedTimer", skalVaereHeldag);
+setDisabledMedOpacity("varighedMinutter", skalVaereHeldag);
 }
 
 function hentFormData() {
@@ -357,8 +358,13 @@ function indlaesAktivitetTilRedigering(id) {
       setChecked("heleDagen", a.varighed === "Hele dagen");
 
       if (a.varighed !== "Hele dagen") {
-        setVal("varighed", a.varighed);
-      }
+  const samletVarighed = Number(a.varighed || 1);
+  const timer = Math.floor(samletVarighed);
+  const minutter = Math.round((samletVarighed - timer) * 60);
+
+  setVal("varighedTimer", timer);
+  setVal("varighedMinutter", minutter);
+}
 
       setVal("note", a.note || "");
       saetGentagelse(a.gentagelse || "ingen");
