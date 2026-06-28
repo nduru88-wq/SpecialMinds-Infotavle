@@ -1016,13 +1016,13 @@ function lavEventElement(a) {
   var erFoedselsdag = erFoedselsdagsAktivitet(a.aktivitet);
 
   var erFastAktivitet = [
-  "Aktivitets café",
-  "Friday Minds",
-  "Fællespause",
-  "KREA",
-  "Praktisk værksted",
-  "Undervisning"
-].includes(a.aktivitet);
+    "Aktivitets café",
+    "Friday Minds",
+    "Fællespause",
+    "KREA",
+    "Praktisk værksted",
+    "Undervisning"
+  ].includes(a.aktivitet);
 
   var div = document.createElement("div");
 
@@ -1039,33 +1039,49 @@ function lavEventElement(a) {
 
   var venstreIkon = erFoedselsdag ? "🎂" : (info.ikon || " ");
 
-  var hoejreIndhold;
+  var personIndhold;
 
-if (erFoedselsdag) {
-  hoejreIndhold = "<div class='event-person-photo event-neutral-person'>👤</div>";
-} else if (!a.person || a.person === "Ingen") {
-  hoejreIndhold = "";
-} else {
-  hoejreIndhold =
-    "<div class='event-person-photo'><img src='" + personImg(a.person) + "'></div>" +
-    "<div class='event-person-label'>" + person + "</div>";
-}
+  if (erFoedselsdag) {
+    personIndhold = "<div class='event-person-photo event-neutral-person'>👤</div>";
+  } else if (!a.person || a.person === "Ingen") {
+    personIndhold = "";
+  } else {
+    personIndhold =
+      "<div class='event-person-photo'><img src='" + personImg(a.person) + "'></div>" +
+      "<div class='event-person-label'>" + person + "</div>";
+  }
 
-  if (erFastAktivitet) {
-  div.innerHTML =
-    "<div class='event-activity-icon'>" + venstreIkon + "</div>" +
+  var personBox =
+    "<div class='event-person-box'>" +
+      personIndhold +
+    "</div>";
+
+  var tekstBox =
     "<div class='event-main-content'>" +
       "<div class='event-title'>" + titel + (tid ? " - " + tid : "") + "</div>" +
       lavEventNote(a) +
-    "</div>" +
-    "<div class='event-person-box'>" +
-      hoejreIndhold +
-    "</div>" +
-    
- "<div class='event-actions'>" +
-  "<button class='delete-btn' onclick=\"event.stopPropagation(); sletAktivitetFraTavle('" + id + "')\">Slet</button>" +
-  "<button class='edit-btn' onclick=\"event.stopPropagation(); aabnRedigerSide('" + id + "')\">Ret</button>" +
-"</div>";
+    "</div>";
+
+  var ikonBox =
+    "<div class='event-activity-icon'>" + venstreIkon + "</div>";
+
+  if (erFastAktivitet) {
+    div.innerHTML =
+      ikonBox +
+      tekstBox +
+      personBox;
+  } else {
+    div.innerHTML =
+      personBox +
+      tekstBox +
+      ikonBox;
+  }
+
+  div.innerHTML +=
+    "<div class='event-actions'>" +
+      "<button class='delete-btn' onclick=\"event.stopPropagation(); sletAktivitetFraTavle('" + id + "')\">Slet</button>" +
+      "<button class='edit-btn' onclick=\"event.stopPropagation(); aabnRedigerSide('" + id + "')\">Ret</button>" +
+    "</div>";
 
   div.addEventListener("click", function() {
     div.classList.toggle("vis-menu");
