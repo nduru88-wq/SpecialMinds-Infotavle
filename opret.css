@@ -78,13 +78,6 @@ body {
   gap: 6px;
 }
 
-.kategori-overskrift {
-  font-size: 15px;
-  font-weight: bold;
-  color: #2f3b4d;
-  text-align: center;
-}
-
 .kategori-rad select {
   width: 100%;
 }
