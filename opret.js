@@ -296,7 +296,9 @@ function hentFormData() {
     person: val("person"),
     aktivitet: hentValgtAktivitet(),
     tidspunkt: hele ? "08:00" : val("tidspunkt"),
-    varighed: hele ? "Hele dagen" : val("varighed"),
+    varighed: hele ? "Hele dagen" : (
+  Number(val("varighedTimer")) + Number(val("varighedMinutter")) / 60
+),
     gentagelse: valgtGentagelse,
     note: val("note")
   };
