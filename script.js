@@ -1015,15 +1015,6 @@ function lavEventElement(a) {
   var fravaer = erFravaer(a.aktivitet);
   var erFoedselsdag = erFoedselsdagsAktivitet(a.aktivitet);
 
-  var erFastAktivitet = [
-    "Aktivitets café",
-    "Friday Minds",
-    "Fællespause",
-    "KREA",
-    "Praktisk værksted",
-    "Undervisning"
-  ].includes(a.aktivitet);
-
   var div = document.createElement("div");
 
   div.className =
@@ -1039,45 +1030,27 @@ function lavEventElement(a) {
 
   var venstreIkon = erFoedselsdag ? "🎂" : (info.ikon || " ");
 
-  var personIndhold;
+  var hoejreIndhold;
 
   if (erFoedselsdag) {
-    personIndhold = "<div class='event-person-photo event-neutral-person'>👤</div>";
+    hoejreIndhold = "<div class='event-person-photo event-neutral-person'>👤</div>";
   } else if (!a.person || a.person === "Ingen") {
-    personIndhold = "";
+    hoejreIndhold = "";
   } else {
-    personIndhold =
+    hoejreIndhold =
       "<div class='event-person-photo'><img src='" + personImg(a.person) + "'></div>" +
       "<div class='event-person-label'>" + person + "</div>";
   }
 
-  var personBox =
+  div.innerHTML =
     "<div class='event-person-box'>" +
-      personIndhold +
-    "</div>";
-
-  var tekstBox =
+      hoejreIndhold +
+    "</div>" +
     "<div class='event-main-content'>" +
       "<div class='event-title'>" + titel + (tid ? " - " + tid : "") + "</div>" +
       lavEventNote(a) +
-    "</div>";
-
-  var ikonBox =
-    "<div class='event-activity-icon'>" + venstreIkon + "</div>";
-
-  if (erFastAktivitet) {
-    div.innerHTML =
-      ikonBox +
-      tekstBox +
-      personBox;
-  } else {
-    div.innerHTML =
-      personBox +
-      tekstBox +
-      ikonBox;
-  }
-
-  div.innerHTML +=
+    "</div>" +
+    "<div class='event-activity-icon'>" + venstreIkon + "</div>" +
     "<div class='event-actions'>" +
       "<button class='delete-btn' onclick=\"event.stopPropagation(); sletAktivitetFraTavle('" + id + "')\">Slet</button>" +
       "<button class='edit-btn' onclick=\"event.stopPropagation(); aabnRedigerSide('" + id + "')\">Ret</button>" +
