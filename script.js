@@ -1015,6 +1015,15 @@ function lavEventElement(a) {
   var fravaer = erFravaer(a.aktivitet);
   var erFoedselsdag = erFoedselsdagsAktivitet(a.aktivitet);
 
+  var erFastAktivitet = [
+  "Aktivitets café",
+  "Friday Minds",
+  "Fællespause",
+  "KREA",
+  "Praktisk værksted",
+  "Undervisning"
+].includes(a.aktivitet);
+
   var div = document.createElement("div");
 
   div.className =
@@ -1042,15 +1051,16 @@ if (erFoedselsdag) {
     "<div class='event-person-label'>" + person + "</div>";
 }
 
+  if (erFastAktivitet) {
   div.innerHTML =
-  "<div class='event-person-box'>" +
-    hoejreIndhold +
-  "</div>" +
-  "<div class='event-main-content'>" +
-    "<div class='event-title'>" + titel + (tid ? " - " + tid : "") + "</div>" +
-    lavEventNote(a) +
-  "</div>" +
-  "<div class='event-activity-icon'>" + venstreIkon + "</div>" +
+    "<div class='event-activity-icon'>" + venstreIkon + "</div>" +
+    "<div class='event-main-content'>" +
+      "<div class='event-title'>" + titel + (tid ? " - " + tid : "") + "</div>" +
+      lavEventNote(a) +
+    "</div>" +
+    "<div class='event-person-box'>" +
+      hoejreIndhold +
+    "</div>" +
     
  "<div class='event-actions'>" +
   "<button class='delete-btn' onclick=\"event.stopPropagation(); sletAktivitetFraTavle('" + id + "')\">Slet</button>" +
