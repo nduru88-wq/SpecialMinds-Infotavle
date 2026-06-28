@@ -137,20 +137,24 @@
 
     <label>Varighed</label>
 
-    <select id="varighed">
-      <option value="0.5">30 minutter</option>
-      <option value="1" selected>1 time</option>
-      <option value="1.5">1 time og 30 minutter</option>
-      <option value="2">2 timer</option>
-      <option value="2.5">2 timer og 30 minutter</option>
-      <option value="3">3 timer</option>
-      <option value="3.5">3 timer og 30 minutter</option>
-      <option value="4">4 timer</option>
-      <option value="4.5">4 timer og 30 minutter</option>
-      <option value="5">5 timer</option>
-      <option value="5.5">5 timer og 30 minutter</option>
-      <option value="6">6 timer</option>
-    </select>
+    <div class="varighed-række">
+  <select id="varighedTimer">
+    <option value="0">0 timer</option>
+    <option value="1" selected>1 time</option>
+    <option value="2">2 timer</option>
+    <option value="3">3 timer</option>
+    <option value="4">4 timer</option>
+    <option value="5">5 timer</option>
+    <option value="6">6 timer</option>
+  </select>
+
+  <select id="varighedMinutter">
+    <option value="0" selected>00 min</option>
+    <option value="15">15 min</option>
+    <option value="30">30 min</option>
+    <option value="45">45 min</option>
+  </select>
+</div>
 
     <label class="hele-dagen-row">
       Hele dagen
