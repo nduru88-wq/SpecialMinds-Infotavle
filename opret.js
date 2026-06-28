@@ -260,7 +260,8 @@ function saetGentagelse(gentagelse) {
 function toggleHeleDagen() {
   const hele = checked("heleDagen");
   setDisabledMedOpacity("tidspunkt", hele);
-  setDisabledMedOpacity("varighed", hele);
+  setDisabledMedOpacity("varighedTimer", hele);
+setDisabledMedOpacity("varighedMinutter", hele);
 }
 
 function setDisabledMedOpacity(id, disabled) {
