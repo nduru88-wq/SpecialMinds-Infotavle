@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="UTF-8">
+
+  <title>Special Minds Opret</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+  <link rel="manifest" href="https://nduru88-wq.github.io/InfotavleSM-Billeder/pwa/manifest-opret.json">
+  <meta name="theme-color" content="#2f3b4d">
+
+  <link rel="apple-touch-icon"
+        href="https://nduru88-wq.github.io/InfotavleSM-Billeder/pwa/Opret-192.png">
+
+  <link rel="stylesheet" href="opret.css">
+</head>
+
+<body>
+
+  <div class="topbar" id="opretTitel">
+    OPRET AKTIVITET
+  </div>
+
+  <div id="indlaeserOverlay">
+    <div class="indlaeserBox">Indlæser aktivitet...</div>
+  </div>
+
+  <div id="loginBox" class="formbox">
+    <h2>Adgang kræves</h2>
+
+    <label>Kode</label>
+
+    <input
+      type="password"
+      id="adgangskode"
+      maxlength="8"
+      inputmode="numeric">
+
+    <button type="button" onclick="logInd()">Log ind</button>
+
+    <div id="loginStatus"></div>
+  </div>
+
+  <div class="formbox" id="opretForm" style="display:none;">
+
+    <label>Dato</label>
+    <select id="dato"></select>
+
+    <div class="repeat-box">
+      <div class="repeat-title">Gentag aktivitet</div>
+
+      <div class="repeat-options">
+        <label class="repeat-option">
+          Dagligt
+          <input type="checkbox" id="gentagDagligt" onchange="vaelgGentagelse('dagligt')">
+        </label>
+
+        <label class="repeat-option">
+          Ugentligt
+          <input type="checkbox" id="gentagUgentligt" onchange="vaelgGentagelse('ugentligt')">
+        </label>
+      </div>
+    </div>
+
+    <label>Person</label>
+
+    <select id="person">
+      <option>Ingen</option>
+      <option>Anja</option>
+      <option>Bettina</option>
+      <option>Ditte</option>
+      <option>Frederik</option>
+      <option>Jan</option>
+      <option>Janni</option>
+      <option>Michael</option>
+      <option>Pernille</option>
+      <option>Peter</option>
+      <option>Sanne</option>
+    </select>
+
+    <label>Vælg kategori</label>
+
+    <div class="kategori-rad">
+
+  <div class="kategori-felt">
+    <select id="aktivitetInfo" onchange="vaelgAktivitetFraGruppe('info')">
+      <option value="">Vælg info</option>
+      <option>Besøg</option>
+      <option>Faglig sparring</option>
+      <option>Møde</option>
+      <option>Møder senere</option>
+      <option>Rundvisning</option>
+      <option>Ude af huset</option>
+      <option>Velkommen til</option>
+    </select>
+  </div>
+
+  <div class="kategori-felt">
+    <select id="aktivitetFravaer" onchange="vaelgAktivitetFraGruppe('fravaer')">
+      <option value="">Vælg fravær</option>
+      <option>Arbejder hjemme</option>
+      <option>Ferie</option>
+      <option>Fri</option>
+      <option>Syg</option>
+    </select>
+  </div>
+
+  <div class="kategori-felt">
+    <select id="aktivitetFast" onchange="vaelgAktivitetFraGruppe('fast')">
+      <option value="">Vælg aktivitet</option>
+      <option>Aktivitets café</option>
+      <option>Friday Minds</option>
+      <option>Fællespause</option>
+      <option>KREA</option>
+      <option>Praktisk værksted</option>
+      <option>Undervisning</option>
+    </select>
+  </div>
+
+</div>
+
+    <input type="hidden" id="aktivitet">
+
+    <label>Starttidspunkt</label>
+
+    <div style="display:flex; align-items:center; gap:8px;">
+      <select id="tidspunktTimer" aria-label="Starttime" style="flex:1; text-align:center; text-align-last:center;">
+        <option value="08">08</option>
+        <option value="09">09</option>
+        <option value="10">10</option>
+        <option value="11">11</option>
+        <option value="12">12</option>
+        <option value="13">13</option>
+        <option value="14">14</option>
+        <option value="15">15</option>
+      </select>
+
+      <span style="font-weight:700;">:</span>
+
+      <select id="tidspunktMinutter" aria-label="Startminutter" style="flex:1; text-align:center; text-align-last:center;">
+        <option value="00">00</option>
+        <option value="15">15</option>
+        <option value="30">30</option>
+        <option value="45">45</option>
+      </select>
+    </div>
+
+    <!-- Beholder det eksisterende felt-id til opret.js. Værdien synkroniseres fra de to felter ovenfor. -->
+    <select id="tidspunkt" style="display:none;" aria-hidden="true">
+      <option>08:00</option>
+    </select>
+
+    <script>
+      (function () {
+        const timer = document.getElementById('tidspunktTimer');
+        const minutter = document.getElementById('tidspunktMinutter');
+        const tidspunkt = document.getElementById('tidspunkt');
+
+        function synkroniserStarttidspunkt() {
+          const vaerdi = timer.value + ':' + minutter.value;
+          tidspunkt.innerHTML = '<option value="' + vaerdi + '" selected>' + vaerdi + '</option>';
+          tidspunkt.value = vaerdi;
+          tidspunkt.dispatchEvent(new Event('change', { bubbles: true }));
+        }
+
+        timer.addEventListener('change', synkroniserStarttidspunkt);
+        minutter.addEventListener('change', synkroniserStarttidspunkt);
+        synkroniserStarttidspunkt();
+
+        window.addEventListener('load', function () {
+          setTimeout(function () {
+            const eksisterende = tidspunkt.value;
+            const match = /^(\d{2}):(00|15|30|45)$/.exec(eksisterende);
+            if (match && timer.querySelector('option[value="' + match[1] + '"]')) {
+              timer.value = match[1];
+              minutter.value = match[2];
+            } else {
+              synkroniserStarttidspunkt();
+            }
+          }, 0);
+        });
+      })();
+    </script>
+
+    <label>Varighed</label>
+
+<div class="varighed-række">
+
+  <div class="varighed-felt">
+    <label for="varighedTimer">Timer</label>
+    <select id="varighedTimer" style="text-align:center; text-align-last:center;">
+      <option value="0">0 timer</option>
+      <option value="1" selected>1 time</option>
+      <option value="2">2 timer</option>
+      <option value="3">3 timer</option>
+      <option value="4">4 timer</option>
+      <option value="5">5 timer</option>
+      <option value="6">6 timer</option>
+    </select>
+  </div>
+
+  <div class="varighed-felt">
+    <label for="varighedMinutter">Minutter</label>
+    <select id="varighedMinutter" style="text-align:center; text-align-last:center;">
+      <option value="0" selected>00 min</option>
+      <option value="15">15 min</option>
+      <option value="30">30 min</option>
+      <option value="45">45 min</option>
+    </select>
+  </div>
+
+</div>
+
+    <label class="hele-dagen-row">
+      Hele dagen
+      <input type="checkbox" id="heleDagen" onchange="toggleHeleDagen()">
+    </label>
+
+    <div id="noteBox">
+      <label>Note</label>
+      <textarea id="note" rows="3" placeholder="Skriv evt. note her"></textarea>
+    </div>
+
+    <button onclick="sendTilTavle()">Send til tavle</button>
+
+    <div class="bundlinje">
+      <a id="foedselsdagBtn" href="foedselsdag.html">
+        Opret fødselsdag
+      </a>
+
+      <div id="status"></div>
+
+      <button type="button" id="gaaTilTavleBtn" onclick="gaaDirekteTilTavle()">
+        Gå til tavle
+      </button>
+    </div>
+
+  </div>
+
+  <script src="opret.js"></script>
+
+</body>
+</html>
